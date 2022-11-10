@@ -3,6 +3,7 @@
 ![](https://img.shields.io/github/issues/zss9844/NJUPT-JP)
 ![](https://img.shields.io/github/forks/zss9844/NJUPT-JP)
 ![](https://img.shields.io/github/stars/zss9844/NJUPT-JP)
+![](https://img.shields.io/github/license/zss9844/NJUPT-JP)
 
 ## 介绍
 在GitHub看了一下只有以前大佬写的一个js的南邮本科生教评，研究生同样有比较麻烦的教学评价。

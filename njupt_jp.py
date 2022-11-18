@@ -61,9 +61,9 @@ class Login:
         self.session.get(url="http://i.njupt.edu.cn/cas/granting")
         # print(self.session.get(url="http://i.njupt.edu.cn/cas/granting").text)
         if userInfo["success"]:
-            self.log(f'{userInfo["message"]} 学号：{userInfo["result"]["userInfo"]["username"]}  姓名：{userInfo["result"]["userInfo"]["realname"]}')
+            self.log(f'{userInfo["message"]} 学号：{userInfo["result"]["userInfo"]["username"]}  姓名：{userInfo["result"]["userInfo"]["realname"]}\n')
             self._reCourse()
-            self.log("所有课程均已完成评价")
+            self.log("所有课程均已完成评价\n")
             return
         else:
             self.log(f'{userInfo["message"]}')
@@ -77,7 +77,7 @@ class Login:
         cList = self._getList()["data"]
         for c in cList:
             courseid = c["ID"]
-            self.log(f'当前评价课程：[{c["COURSENAME"]}]  教学老师：[{c["TEACHERNAME"]}]')
+            self.log(f'当前评价课程：[{c["COURSENAME"]}]  教学老师：[{c["TEACHERNAME"]}]\n')
             self._doPaper(courseid)
         return
     #提交教评
@@ -95,7 +95,9 @@ class Login:
         resQue = self.session.get(url=paperUrl).json()
         answers = {}
         for index,ans in enumerate(resQue["data"]["paperSubjectList"]):
-            answers[ans["subjectId"]] = {"result": "A"} if index!=len(resQue["data"]["paperSubjectList"])-1 else {"result": "B"}
+            #表单更新 2022/11/18
+            if ans["type"] == 9:
+                answers["s"+ans["subjectId"]] = {"result": "A"} if index!=len(resQue["data"]["paperSubjectList"])-2 else {"result": "B"}
         del resPaper["paperId"]
         resPaper.update({
             "deviceId":f"fc1b6ae-{self.randoms(4)}-{self.randoms(3)}",
@@ -120,6 +122,7 @@ class Login:
 
     def randoms(self,len):
         return ''.join(random.sample(string.ascii_letters + string.digits, len)).lower()
+
 
 
 if __name__ == '__main__':

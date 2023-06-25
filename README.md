@@ -5,7 +5,7 @@
 ![](https://img.shields.io/github/stars/zss9844/NJUPT-JP)
 ![](https://img.shields.io/github/license/zss9844/NJUPT-JP)
 
-## 介绍(2022/11/18更新 适用本学年)
+## 介绍(2023/06/28 暂无BUG)
 在GitHub看了一下只有以前大佬写的一个js的南邮本科生教评，研究生同样有比较麻烦的教学评价。
 
 本篇没有采用JavaScript的原因是简单且没有挑战性，源码公开是为了给想要学习爬虫的小伙伴们一个样例，也算是一次小练手。
